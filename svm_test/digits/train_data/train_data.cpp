@@ -22,12 +22,19 @@ int openfile(int flag, const char * dpath);
 
 int main()
 {
-    // 准备训练数据和标签
-    Mat classes;
-    openfile(1,"../../data/1");
+    // 读取图片并打标签，两个即二分类，多个即多分类
     openfile(0,"../../data/0");
+    openfile(1,"../../data/1");
+    openfile(2,"../../data/2");
+    openfile(3,"../../data/3");
+    openfile(4,"../../data/4");
+    openfile(5,"../../data/5");
+    openfile(6,"../../data/6");
+
+    // 训练数据和标签的格式转化
+    Mat classes;
     Mat trainingData(trainingImages.size(),trainingImages[0].cols,CV_32FC1);
-    for (int i=0; i<trainingImages.size(); i++)
+    for(int i=0; i<trainingImages.size(); i++)
     {
         Mat tmp(trainingImages[i]);
         tmp.copyTo(trainingData.row(i));
